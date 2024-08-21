@@ -1,0 +1,28 @@
+<div class="container">
+  <h2 class="title">Toys</h2>
+    <div class="actions">
+      <a [routerLink]="['/toys/new']" class="btn btn-primary">Add New Order</a>
+    </div>
+  <table class="toy-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let toy of toys">
+        <td>{{ toy.id }}</td>
+        <td>{{ toy.name }}</td>
+        <td>{{ toy.description }}</td>
+        <td>{{ toy.price | currency }}</td>
+        <td>
+          <button (click)="deleteToy(toy.id)" class="btn btn-delete">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

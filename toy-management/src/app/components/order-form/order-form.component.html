@@ -1,0 +1,49 @@
+<div class="order-form-container">
+  <h2 class="title">Create Order</h2>
+  <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="clientId">Client ID:</label>
+      <input type="number" id="clientId" formControlName="clientId" />
+      <div *ngIf="orderForm.get('clientId')?.invalid && orderForm.get('clientId')?.touched" class="error">
+        Client ID is required.
+      </div>
+    </div>
+
+    <div formArrayName="items">
+      <div *ngFor="let item of items.controls; let i = index" [formGroupName]="i" class="item-group">
+        <div class="form-group">
+          <label for="toyId-{{i}}">Toy:</label>
+          <select id="toyId-{{i}}" formControlName="toyId">
+            <option *ngFor="let toy of toys" [value]="toy.id">
+              {{ toy.id }} - {{ toy.name }}
+            </option>
+          </select>
+          <div *ngIf="item.get('toyId')?.invalid && item.get('toyId')?.touched" class="error">
+            Toy ID is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="quantity-{{i}}">Quantity:</label>
+          <input type="number" id="quantity-{{i}}" formControlName="quantity" />
+          <div *ngIf="item.get('quantity')?.invalid && item.get('quantity')?.touched" class="error">
+            Quantity is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="price-{{i}}">Price:</label>
+          <input type="number" id="price-{{i}}" formControlName="price" />
+          <div *ngIf="item.get('price')?.invalid && item.get('price')?.touched" class="error">
+            Price is required.
+          </div>
+        </div>
+
+        <button type="button" (click)="removeItem(i)" class="btn btn-delete">Remove Item</button>
+      </div>
+    </div>
+
+    <button type="button" (click)="addItem()" class="btn btn-primary">Add Item</button>
+    <button type="submit" class="btn btn-primary" [disabled]="orderForm.invalid">Create</button>
+  </form>
+</div>

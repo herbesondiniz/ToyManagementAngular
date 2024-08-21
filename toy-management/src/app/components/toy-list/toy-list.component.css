@@ -1,0 +1,89 @@
+/* Container for the toy list */
+.container {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styling */
+.title {
+  font-size: 22px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+}
+
+/* Button styling */
+.btn {
+  display: inline-block;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-delete {
+  background-color: #f8d7da;
+  color: #000;
+  border: 1px solid #f5c6cb;
+}
+
+.btn-delete:hover {
+  background-color: #f5c6cb;
+}
+
+/* Table styling */
+.toy-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #f4f4f4;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+.btn-info {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.btn-edit {
+  background-color: #ffc107;
+  color: white;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+  margin-left: 0.5rem;
+}
+
+.toy-table .btn {
+  margin-right: 0.5rem;
+}
+
+.toy-table td {
+  text-align: center;
+}
+
+.toy-table th {
+  text-align: center;
+}

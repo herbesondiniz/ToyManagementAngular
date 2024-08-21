@@ -1,0 +1,53 @@
+<div class="container">
+  <h2 class="title">Orders</h2>
+  <div class="actions">
+    <a [routerLink]="['/orders/new']" class="btn btn-primary">Add New Order</a>
+  </div>
+  <table class="order-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Client ID</th>
+        <th>Total Amount</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.id }}</td>
+        <td>{{ order.clientId }}</td>
+        <td>{{ order.totalAmount | currency }}</td>
+        <td>
+          <button (click)="openModal(order)" class="btn btn-info">Details</button>
+          <a [routerLink]="['/orders/edit', order.id]" class="btn btn-edit">Edit</a>
+          <button (click)="deleteOrder(order.id)" class="btn btn-delete">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal para exibir os detalhes do pedido -->
+<div class="modal" tabindex="-1" role="dialog" #detailsModal>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Order Details</h5>
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Order ID:</strong> {{ selectedOrder?.id }}</p>
+        <p><strong>Client ID:</strong> {{ selectedOrder?.clientId }}</p>
+        <p><strong>Total Amount:</strong> {{ selectedOrder?.totalAmount | currency }}</p>
+        <div *ngFor="let item of selectedOrder?.items">
+          <p><strong>Item {{ item.toyId }}:</strong> {{ item.quantity }} x {{ item.price | currency }}</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

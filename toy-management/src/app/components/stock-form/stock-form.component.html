@@ -1,0 +1,27 @@
+<div class="stock-form-container">
+  <h2 class="title">Create Stock</h2>
+  <form (ngSubmit)="onSubmit()" #stockForm="ngForm">
+    <div class="form-group">
+      <label for="toyId">Toy ID:</label>
+      <input type="number" id="toyId" name="toyId" [(ngModel)]="stock.toyId" (ngModelChange)="onToyIdChange()" #toyId="ngModel" required />
+      <div *ngIf="toyId.invalid && toyId.touched" class="error">
+        Toy ID is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="toyName">Toy Name:</label>
+      <input type="text" id="toyName" name="toyName" [value]="toyName" disabled />
+    </div>
+
+    <div class="form-group">
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" name="quantity" [(ngModel)]="stock.quantity" #quantity="ngModel" required />
+      <div *ngIf="quantity.invalid && quantity.touched" class="error">
+        Quantity is required.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="stockForm.invalid">Create</button>
+  </form>
+</div>

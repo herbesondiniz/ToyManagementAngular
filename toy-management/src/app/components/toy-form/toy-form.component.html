@@ -1,0 +1,53 @@
+<form (ngSubmit)="saveToy()" #toyForm="ngForm" class="toy-form">
+    <h2>{{ isEdit ? 'Edit Toy' : 'Add New Toy' }}</h2>
+  
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        [(ngModel)]="toy.name"
+        required
+        #name="ngModel"
+        class="form-control"
+      />
+      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error">
+        Name is required.
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        name="description"
+        [(ngModel)]="toy.description"
+        required
+        #description="ngModel"
+        class="form-control"
+      ></textarea>
+      <div *ngIf="description.invalid && (description.dirty || description.touched)" class="error">
+        Description is required.
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input
+        type="number"
+        id="price"
+        name="price"
+        [(ngModel)]="toy.price"
+        required
+        #price="ngModel"
+        class="form-control"
+      />
+      <div *ngIf="price.invalid && (price.dirty || price.touched)" class="error">
+        Price is required and must be a number.
+      </div>
+    </div>
+  
+    <button type="submit" class="btn btn-primary">{{ isEdit ? 'Update Toy' : 'Add Toy' }}</button>
+  </form>
+  

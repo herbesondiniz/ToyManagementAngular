@@ -1,0 +1,26 @@
+<div class="stock-list-container">
+  <h2 class="title">Stock List</h2>
+  <div class="actions">
+    <a [routerLink]="['/stocks/new']" class="btn btn-primary">Add New Stock</a>
+  </div>
+  <table class="stock-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Toy ID</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let stock of stocks">
+        <td>{{ stock.id }}</td>
+        <td>{{ stock.toyId }}</td>
+        <td>{{ stock.quantity }}</td>
+        <td>          
+          <button (click)="deleteStock(stock.id)" class="btn btn-delete">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
